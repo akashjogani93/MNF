@@ -6,11 +6,13 @@
             <div class="form-row align-items-center">
               <div class="col-sm-8 mb-2 mb-sm-0">
                 <input type="email" class="form-control input-for" placeholder="Your email address" id="signupEmail">
-                <div id="signupvalid"></div>
               </div>
               <div class="col-sm-4">
                 <button type="submit" class="btn btn-block btBack" id="signup">SIGN UP</button>
               </div>
+            </div>
+            <div class="form-row align-items-center">
+              <div id="signupvalid"></div>
             </div>
         </div>
       </div>

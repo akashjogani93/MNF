@@ -14,10 +14,10 @@ if(isset($_POST['Submit']))
         $des=$out['des'];
         ?>
             <div class="eventsboxes">
-                <h4 class="text-center" style="color:black;"><?php echo $name; ?></h4>
                 <img src="<?php echo 'ajax/admin/'.$profile; ?>" alt="Image 1" class="card-img-top1">
-                <h5><b>Phone:</b><?php echo $phone; ?></h5>
-                <p style="color:black;"><?php echo $des; ?></p>
+                <h4 class="text-left" style="color:black;"><?php echo $name; ?></h4>
+                <p><b>Phone: </b><?php echo $phone; ?></p>
+                <p><b>Designation: <?php echo $des; ?></p>
             </div>
         <?php   
     } 

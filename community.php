@@ -41,9 +41,10 @@ include('connect.php'); ?>
       </div>
     </div>
     <div class="row" id="gridRow">
-      
+          
     </div>
           </br>
+  </div>
     <div class="row custom-margin">
       <div class="col-lg-12">
           <center><h3 class="text-center" style="color:black;">OUR COMMUNITY</h3></center>
@@ -52,7 +53,7 @@ include('connect.php'); ?>
     <div class="row" id="eventRow">
       
     </div>
-  </div>
+  
   
 </div>
 <script>
@@ -85,12 +86,15 @@ include('connect.php'); ?>
         {
           $('#comname').css('border-color', 'red');
           exit()
-        }
-        if(nameInput=='')
+        }else
         {
-          $('#nameInput').css('border-color', 'red');
-          exit();
+          $('#comname').css('border-color', '');
         }
+        // if(nameInput=='')
+        // {
+        //   $('#nameInput').css('border-color', 'red');
+        //   exit();
+        // }
         let log=$.ajax({
             url: 'ajax/load_users.php',
             type: "POST",
@@ -102,6 +106,7 @@ include('connect.php'); ?>
                 $('#seeall').show();
             }
         });
+        // console.log(log);
       });
 
       $("#nameInput").autocomplete({

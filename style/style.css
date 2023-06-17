@@ -191,15 +191,18 @@ p, h4, h6{
   padding: 10px 5px 10px 10px;
 }
 .card-title {
-  margin-bottom: 0.20rem;
+  margin-bottom: 0.10rem;
+  margin-top: 0.10rem;
 }
 
 .card-body>.card-title ,.card-body>.card-title>.card-subtitle{
   text-align:left;
 }
+
 .card-subtitle{
     color:#756767;
     font-size: 15px;
+    margin-top: 3px;
 }
 .card-img-top {
   width: 100%; 
@@ -265,13 +268,16 @@ p, h4, h6{
 .eventsboxes {
   width: 23% !important;
   margin: 15px 5px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(255, 255, 255, 0.15) 0px 15px 25px;
+  box-shadow: rgb(11 11 11 / 15%) 2px -1px 12px;
   padding: 20px;
   border-radius: 0;
- 
+  background-color: white;
 }
-.eventsboxes p{
-  color:#000 ;
+.eventsboxes p {
+  font-weight: 400;
+  color: #756767;
+  margin-bottom: 0;
 }
 .card-img-top1{
   width: 100%; 
@@ -316,3 +322,4 @@ p, h4, h6{
   margin:10px !important;
   font-size: 22px;
 }
+

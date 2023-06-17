@@ -147,6 +147,7 @@
         $adds=$row['adds'];
         $occ=$row['occ'];
         $sta=$row['sta'];
+        $sta=$row['sta'];
         $jamaat=$row['community'];
     }
 ?>
@@ -181,7 +182,7 @@
             <p><span>Gender: </span><?php echo $gender; ?></p>
             <p><span>Address: </span><?php echo $adds; ?></p>
             <p><span>Occupation: </span><?php echo $occ; ?></p>
-            <p><span>Satatus: </span><?php echo $sta; ?></p>
+            <p><span>Married Status: </span><?php echo $sta; ?></p>
               </div>
             </div>
           </div>
@@ -245,6 +246,22 @@
             </select>
         </div>
         <div class="form-group">
+            <label class="d-block" for="married">Married Status:</label>
+            <select name="married" id="married">
+                <?php
+                if($gender!='')
+                { ?>
+                    <option value="<?php echo $sta; ?>"><?php echo $sta; ?></option> <?php
+                }else
+                { ?>
+                    <option value="">Select</option><?php
+                }
+                ?>
+                <option>Un Married</option>
+                <option>Married</option>
+            </select>
+        </div>
+        <div class="form-group">
             <label for="adds">Address:</label>
             <input type="text" id="adds" class="form-control" value="<?php echo $adds; ?>">
         </div>
@@ -287,17 +304,16 @@
     var dob=$('#dob').val();
     var gender=$('#gen').val();
     var adds=$('#adds').val();
+    var married=$('#married').val();
     var file=$('#path')[0].files[0];
     
-    var inputIds = ['#name', '#phone', '#email','#age','#dob','#gen','#adds'];
+    var inputIds = ['#name','#phone','#email'];
     for (var i = 0; i < inputIds.length; i++) 
     {
         var inputValue = $(inputIds[i]).val();
         if (inputValue === '') 
         {
             let inn=$(inputIds[i]).css('border-color', 'red');
-            alert(inn);
-            console.log(inn)
             exit();
         }else {
             $(inputIds[i]).css('border-color', '');
@@ -311,7 +327,7 @@
     {
       var not='pass';
     }
-
+    
     var form_data = new FormData();
     form_data.append('name', name);
     form_data.append('phone', phone);
@@ -322,6 +338,7 @@
     form_data.append('adds', adds);
     form_data.append('file', file);
     form_data.append('not', not);
+    form_data.append('married', married);
 
       let log=$.ajax({
         url:"ajax/update_profile.php",
@@ -331,13 +348,13 @@
         processData: false,
         success: function(response) 
         {
-          $('#submited').html(response);
-            setTimeout(function() {
-            $('#submited').html('');
-                }, 3000);
-                for (var i = 0; i < inputIds.length; i++) {
-                    $(inputIds[i]).val('');
-                }
+          // $('#submited').html(response);
+          //   setTimeout(function() {
+          //   $('#submited').html('');
+          //       }, 3000);
+                // for (var i = 0; i < inputIds.length; i++) {
+                //     $(inputIds[i]).val('');
+                // }
                 location.reload();
         }
         });

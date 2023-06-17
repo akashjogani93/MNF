@@ -29,10 +29,10 @@
         <ul class="quick-links">
           <li><a class="quick-link" href="home.php">Home</a></li>
           <li><a class="quick-link" href="community.php">Community</a></li>
-          <li><a class="quick-link" href="#">Events</a></li>
-          <li><a class="quick-link" href="#">About Us</a></li>
-          <li><a class="quick-link" href="#">Contact Us</a></li>
-          <li><a class="quick-link" href="#">Login</a></li>
+          <li><a class="quick-link" href="events.php">Events</a></li>
+          <li><a class="quick-link" href="aboutus.php">About Us</a></li>
+          <li><a class="quick-link" href="contactus.php">Contact Us</a></li>
+          <!-- <li><a class="quick-link" href="">Login</a></li> -->
         </ul>
       </div>
       <div class="col-md-4">

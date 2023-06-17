@@ -76,19 +76,23 @@
 <script>
   $(document).ready(function()
   {
+
+    $('#name').keypress(function(event)
+    {
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+            if ((keycode < 48 || keycode > 57))
+            return true;
+
+            return false;
+
+    });
       $('#contactsubmit').click(function()
       {
           var name=$('#name').val();
           var email=$('#email').val();
           var message=$('#message').val();
-          var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          if(emailPattern.test(email))
-          {
 
-            $('#validemail').html('');
-            $('#email').css('border-color', '');
-
-            var inputIds = ['#name','#email', '#message'];
+          var inputIds = ['#name','#email', '#message'];
             for (var i = 0; i < inputIds.length; i++) 
             {
                 var inputValue = $(inputIds[i]).val();
@@ -100,6 +104,15 @@
                     $(inputIds[i]).css('border-color', '');
                 }
             }
+
+          var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if(emailPattern.test(email))
+          {
+
+            $('#validemail').html('');
+            $('#email').css('border-color', '');
+
+            
 
             var form_data = new FormData();
             form_data.append('name', name);

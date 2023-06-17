@@ -21,7 +21,7 @@
                 <center><h3 class="text-center" style="color:black;">OUR LATEST EVENTS</h3></center>
             </div>
         </div>
-        <div class="row" id="eventRow">
+        <div class="row" id="eventRow" style="background-color: #f0f0f0;">
             
         </div>
     </div>

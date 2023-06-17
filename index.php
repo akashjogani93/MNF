@@ -63,6 +63,25 @@
             background-color:rgb(113, 15, 66);
             color:white;
         }
+
+        .loader {
+            border: 10px solid #f3f3f3;
+            border-top: 10px solid #c934db;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            animation: spin 2s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hidden {
+            display: none;
+        }
     </style>
     <title>MNF</title>
 </head>
@@ -130,16 +149,17 @@
                     <div id="Occu" style="margin-top:7px; font-size:10px; letter-spacing:0.8px"></div>
                 </div>
                 <div class="form-group">
-                    <label for="sta">Status</label>
+                    <label for="sta">Married Status</label>
                     <select id="sta" class="form-control" required>
                         <option value=""></option>
-                        <option>UnMarried</option>
+                        <option>Un Married</option>
                         <option>Married</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="text" id="password" class="form-control" required autocomplete="off">
+                    <div style="margin-top:7px; font-size:10px; letter-spacing:0.8px">Password Must Be Alphanumeric Minumum length 6</div>
                     <div id="passValid" style="margin-top:7px; font-size:10px; letter-spacing:0.8px"></div>
                 </div>
                 <div class="form-group">
@@ -149,8 +169,15 @@
                 </div>
                 <button type="submit" class="btn btn-block" id="register">Register</button>
                 <p class="login-link text-center">Already have an account? <a href="#" id="login-link">Login here</a></p>
+                
             </div>
             <!-- Registration Box End -->
+
+            <div id="after-register" style="display: none;">
+                <div class="loader hidden"></div>
+                <p class="text-center" id="hidden"></p>
+                <p class="login-link text-center" id="continue-to"></p>
+            </div>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -160,6 +187,7 @@
             $("#register-link").click(function (e) {
                 e.preventDefault();
                 $("#login-form").hide();
+                $("#after-register").hide();
                 $("#register-form").show();
             });
 
@@ -167,24 +195,31 @@
                 e.preventDefault();
                 $("#register-form").hide();
                 $("#login-form").show();
+                $("#after-register").hide();
+            });
+            $("#login-link1").click(function (e) {
+                e.preventDefault();
+                $("#register-form").hide();
+                $("#login-form").show();
+                $("#after-register").hide();
             });
 
             // To check pass and conform pass are same or not in registration box
-            $('#confirm-password').keypress(function()
-            {
-                var password=$('#password').val();
-                var confirmPassword=$('#confirm-password').val();
-                if(confirmPassword==password)
-                {
-                    $('#confirm-password').css('border-color', 'red');
-                    $('#confirm').html('<span style="color:red">Password Not Matched</span>');
-                    exit();
-                }else
-                {
-                    $('#confirm-password').css('border-color', '');
-                    $('#confirm').html('');
-                }
-            });
+            // $('#confirm-password').keypress(function()
+            // {
+            //     var password=$('#password').val();
+            //     var confirmPassword=$('#confirm-password').val();
+            //     if(confirmPassword==password)
+            //     {
+            //         $('#confirm-password').css('border-color', 'red');
+            //         $('#confirm').html('<span style="color:red">Password Not Matched</span>');
+            //         exit();
+            //     }else
+            //     {
+            //         $('#confirm-password').css('border-color', '');
+            //         $('#confirm').html('');
+            //     }
+            // });
 
             // when Click On Registration Box register box
             $('#register').click(function()
@@ -211,34 +246,76 @@
                     }
                 }
 
-                var form_data = new FormData();
-                form_data.append('name', name);
-                form_data.append('email', email);
-                form_data.append('phone', phone);
-                form_data.append('com', com);
-                form_data.append('password', password);
-                form_data.append('occ', occ);
-                form_data.append('sta', sta);
-
-                let log=$.ajax({
-                    url:"ajax/reg.php",
-                    method:"POST",
-                    data:form_data,
-                    contentType: false,
-                    processData: false,
-                    success: function(response) 
-                    {
-                        $('#confirm').html(response);
-                        window.location.href = "index.php";
-                        setTimeout(function() 
+                //when registration Box  email validation
+                var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if(emailPattern.test(email))
+                {
+                    let log=$.ajax({
+                        url:"ajax/register.php",
+                        method:"POST",
+                        data:{validemail:email},
+                        success: function(response)
                         {
-                            $('#confirm').html('');
-                        }, 3000);
-                        for (var i = 0; i < inputIds.length; i++) {
-                            $(inputIds[i]).val('');
+                            if(response=='valid')
+                            {
+                                $('#email').css('border-color', 'green');
+                                $('#validemail').html('');
+                                mobile_valid();
+                                // $('#register').prop('disabled',false);
+                            }else
+                            {
+                                $('#validemail').html("<span style='color:red'>Email Is Alredy Used</span>");
+                                $('#email').css('border-color', 'red');
+                                // $('#register').prop('disabled',true);
+                                exit();
+                            }
                         }
-                    }
-                });
+                    });
+                }else
+                {
+                    $('#validemail').html("<span style='color:red'>Email Is Not Valid</span>");
+                    $('#email').css('border-color', 'red');
+                    // $('#register').prop('disabled',true);
+                    exit();
+                }
+                
+                // $("#register-form").hide();
+                // $("#after-register").show();
+                // $('.loader').removeClass('hidden');
+
+                // var form_data = new FormData();
+                // form_data.append('name', name);
+                // form_data.append('email', email);
+                // form_data.append('phone', phone);
+                // form_data.append('com', com);
+                // form_data.append('password', password);
+                // form_data.append('occ', occ);
+                // form_data.append('sta', sta);
+
+                // let log=$.ajax({
+                //     url:"ajax/reg.php",
+                //     method:"POST",
+                //     data:form_data,
+                //     contentType: false,
+                //     processData: false,
+                //     success: function(response) 
+                //     {
+                //         setTimeout(function() {
+                //             $('.loader').addClass('hidden');
+                //             setTimeout(function() {
+                //                 $('#hidden').html(response);
+                //                 $('#continue-to').html('Continue To..<a href="#" id="login-link1">Login here</a>');
+                                
+                //                 setTimeout(function() {
+                //                     window.location.href = "index.php";
+                //                 }, 5000);
+                                
+                //             }, 5000);
+                            
+                //         }, 5000);
+
+                //     }
+                // });
                         // console.log(log)
             });
 
@@ -259,12 +336,18 @@
                     $('#password1').css('border-color', 'red');
                     exit();
                 }
+
+                $("#login-form").hide();
+                $("#after-register").show();
+                $('.loader').removeClass('hidden');
+
                 let log=$.ajax({
                     url:"ajax/register.php",
                     method:"POST",
                     data:{password:password,emal:email},
                     success: function(response)
                     {
+                        $('.loader').addClass('hidden');
                         if(response=='uservalid')
                         {
                             $('#password1').css('border-color', 'green');
@@ -319,71 +402,145 @@
             });
 
             //when registration Box  email validation
-            $('#email').blur(function()
-            {
-                var email = $('#email').val();
-                var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if(emailPattern.test(email))
-                {
-                    let log=$.ajax({
-                        url:"ajax/register.php",
-                        method:"POST",
-                        data:{validemail:email},
-                        success: function(response)
-                        {
-                            if(response=='valid')
-                            {
-                                $('#email').css('border-color', 'green');
-                                $('#validemail').html('');
-                                $('#register').prop('disabled',false);
-                            }else
-                            {
-                                $('#validemail').html("<span style='color:red'>Email Are Alredy Used</span>");
-                                $('#email').css('border-color', 'red');
-                                $('#register').prop('disabled',true);
-                            }
-                        }
-                    });
-                }else
-                {
-                    $('#validemail').html("<span style='color:red'>Email Is Not Valid</span>");
-                    $('#email').css('border-color', 'red');
-                    $('#register').prop('disabled',true);
-                }
-            });
+            // $('#email').blur(function()
+            // {
+            //     var email = $('#email').val();
+            //     var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            //     if(emailPattern.test(email))
+            //     {
+            //         let log=$.ajax({
+            //             url:"ajax/register.php",
+            //             method:"POST",
+            //             data:{validemail:email},
+            //             success: function(response)
+            //             {
+            //                 if(response=='valid')
+            //                 {
+            //                     $('#email').css('border-color', 'green');
+            //                     $('#validemail').html('');
+            //                     $('#register').prop('disabled',false);
+            //                 }else
+            //                 {
+            //                     $('#validemail').html("<span style='color:red'>Email Are Alredy Used</span>");
+            //                     $('#email').css('border-color', 'red');
+            //                     $('#register').prop('disabled',true);
+            //                 }
+            //             }
+            //         });
+            //     }else
+            //     {
+            //         $('#validemail').html("<span style='color:red'>Email Is Not Valid</span>");
+            //         $('#email').css('border-color', 'red');
+            //         $('#register').prop('disabled',true);
+            //     }
+            // });
 
             //when registration Box  phone validation
-            $('#phone').blur(function()
-            {
-                var phone = $('#phone').val();
-                if(phone.length==10) 
+            // $('#phone').blur(function()
+            // {
+                function mobile_valid()
                 {
-                    let log=$.ajax({
-                        url:"ajax/register.php",
-                        method:"POST",
-                        data:{phone:phone},
-                        success: function(response)
-                        {
-                            if(response=='valid')
+                    var phone = $('#phone').val();
+                    if(phone.length==10 && !areAllDigitsSame(phone)) 
+                    {
+                        let log=$.ajax({
+                            url:"ajax/register.php",
+                            method:"POST",
+                            data:{phone:phone},
+                            success: function(response)
                             {
-                                $('#phone').css('border-color', 'green');
-                                $('#validmobile').html('');
-                                $('#register').prop('disabled',false);
-                            }else
-                            {
-                                $('#validmobile').html("<span style='color:red'>Mobile Are Alredy Used</span>");
-                                $('#phone').css('border-color', 'red');
-                                $('#register').prop('disabled',true);
+                                if(response=='valid')
+                                {
+                                    $('#phone').css('border-color', 'green');
+                                    $('#validmobile').html('');
+                                    registration();
+                                    // $('#register').prop('disabled',false);
+                                }else
+                                {
+                                    $('#validmobile').html("<span style='color:red'>Mobile Are Alredy Used</span>");
+                                    $('#phone').css('border-color', 'red');
+                                    // $('#register').prop('disabled',true);
+                                    exit();
+                                }
+                            }
+                        });
+                    }else
+                    {
+                        $('#validmobile').html("<span style='color:red'>Mobile Is Not Valid</span>");
+                        $('#phone').css('border-color', 'red');
+                        // $('#register').prop('disabled',true);
+                        exit();
+                    }
+
+                    function areAllDigitsSame(phoneNumber) 
+                    {
+                        var firstDigit = phoneNumber.charAt(0);
+
+                        for (var i = 1; i < phoneNumber.length; i++) {
+                            if (phoneNumber.charAt(i) !== firstDigit) {
+                            return false;
                             }
                         }
-                    });
-                }else
-                {
-                $('#validmobile').html("<span style='color:red'>Mobile Is Not Valid</span>");
-                $('#phone').css('border-color', 'red');
-                $('#register').prop('disabled',true);
+
+                        return true;
+                    }
                 }
-            });
+
+                //REgistration
+                function registration()
+                {
+                    var name=$('#name').val();
+                    var email=$('#email').val();
+                    var phone=$('#phone').val();
+                    var com=$('#com').val();
+                    var occ=$('#occ').val();
+                    var sta=$('#sta').val();
+                    var password=$('#password').val();
+                    var confirmPassword=$('#confirm-password').val();
+
+                    if(confirmPassword!=password)
+                    {
+                        $('#confirm-password').css('border-color', 'red');
+                        $('#confirm').html('<span style="color:red">Password Not Matched</span>');
+                        exit();
+                    }else
+                    {
+                        $('#confirm-password').css('border-color', '');
+                        $('#confirm').html('');
+                    }
+
+                    $("#register-form").hide();
+                    $("#after-register").show();
+                    $('.loader').removeClass('hidden');
+
+                    var form_data = new FormData();
+                    form_data.append('name', name);
+                    form_data.append('email', email);
+                    form_data.append('phone', phone);
+                    form_data.append('com', com);
+                    form_data.append('password', password);
+                    form_data.append('occ', occ);
+                    form_data.append('sta', sta);
+
+                    let log=$.ajax({
+                        url:"ajax/reg.php",
+                        method:"POST",
+                        data:form_data,
+                        contentType: false,
+                        processData: false,
+                        success: function(response)
+                        {
+                            $('.loader').addClass('hidden');
+                            $('#hidden').html(response);
+                            $('#continue-to').html('Continue To..<a href="#" id="login-link1">Login here</a>');
+                            
+                            setTimeout(function() {
+                                window.location.href = "index.php";
+                            }, 5000);
+                        }
+                    });
+                }
+            // });
             //when registration Box  phone validation
             $('#phone').keypress(function(event)
             {
@@ -394,12 +551,24 @@
                     return true;
 
             });
+            $('#name , #occ').keypress(function(event)
+            {
+                var keycode = (event.keyCode ? event.keyCode : event.which);
+                    if ((keycode < 48 || keycode > 57))
+                    return true;
+
+                    return false;
+
+            });
 
             //when registration Box  password validation
             $('#password').blur(function()
             {
                 var password = $('#password').val();
-                let log=$.ajax({
+                const alphanumericRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+                if (password.length >= 6 && alphanumericRegex.test(password)) 
+                {
+                    let log=$.ajax({
                     url:"ajax/register.php",
                     method:"POST",
                     data:{password12:password},
@@ -409,15 +578,22 @@
                         {
                             $('#password').css('border-color', 'green');
                             $('#passValid').html('');
-                            $('#register').prop('disabled',false);
+                            // $('#register').prop('disabled',false);
+                            // exit()
                         }else
                         {
-                            $('#passValid').html("<span style='color:red'>Password Are Alredy Used</span>");
+                            $('#passValid').html("<span style='color:red'>Password Is Alredy Used</span>");
                             $('#password').css('border-color', 'red');
-                            $('#register').prop('disabled',true);
+                            // $('#register').prop('disabled',true);
+                            exit();
                         }
                     }
                 });
+                }else
+                {
+                    $('#passValid').html("<span style='color:red'>Password Not Valid</span>");
+                    $('#password').css('border-color', 'red');
+                }
             });
         });
     </script>

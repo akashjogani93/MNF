@@ -14,6 +14,7 @@ if(isset($_POST['name']))
     $gender = $_POST['gender'];
     $adds = $_POST['adds'];
     $not = $_POST['not'];
+    $married = $_POST['married'];
 
     if($not=='pass')
     {
@@ -24,10 +25,10 @@ if(isset($_POST['name']))
    
     if($not=='pass')
     {
-        $query="UPDATE `user` SET `name`='$name',`email`='$email',`phone`='$phone',`dob`='$dob',`gender`='$gender',`age`='$age',`adds`='$adds',`profile`='$bond1' WHERE `id`='$id'";
+        $query="UPDATE `user` SET `name`='$name',`email`='$email',`phone`='$phone',`dob`='$dob',`gender`='$gender',`age`='$age',`adds`='$adds',`profile`='$bond1',`sta`='$married' WHERE `id`='$id'";
     }else
     {
-        $query="UPDATE `user` SET `name`='$name',`email`='$email',`phone`='$phone',`dob`='$dob',`gender`='$gender',`age`='$age',`adds`='$adds' WHERE `id`='$id'";
+        $query="UPDATE `user` SET `name`='$name',`email`='$email',`phone`='$phone',`dob`='$dob',`gender`='$gender',`age`='$age',`adds`='$adds',`sta`='$married' WHERE `id`='$id'";
     }
     if (mysqli_query($conn, $query))
     {
