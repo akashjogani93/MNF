@@ -2,8 +2,12 @@
 
 if(isset($_POST['Submit']))
 {
-    
-    $query="SELECT * FROM `user` ORDER BY `id`";
+    $page = isset($_POST['page']) ? $_POST['page'] : 1;
+    $pageSize = isset($_POST['pageSize']) ? $_POST['pageSize'] : 12;
+
+    $offset = ($page - 1) * $pageSize;
+
+    $query="SELECT * FROM `user` ORDER BY `id` LIMIT $offset, $pageSize";
     $sn=0;
     $confirm = mysqli_query($conn, $query) or die(mysqli_error());
     while ($out = mysqli_fetch_array($confirm)) 
@@ -57,6 +61,10 @@ if(isset($_POST['comname']))
             $profile=$out['profile'];
             $email=$out['email'];
             $phone=$out['phone'];
+            if($profile=='')
+            {
+                $profile="../img/nouser.jpg";
+            }
             ?>
 
             <div class="" id="col">

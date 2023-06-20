@@ -43,6 +43,10 @@ include('connect.php'); ?>
     <div class="row" id="gridRow">
           
     </div>
+    <div class="pagination">
+        <button class="page-link" id="prev-button" disabled>Previous</button>
+        <button class="page-link" id="next-button">Next</button>
+    </div>
           </br>
   </div>
     <div class="row custom-margin">
@@ -53,12 +57,55 @@ include('connect.php'); ?>
     <div class="row" id="eventRow">
       
     </div>
-  
-  
 </div>
 <script>
   $(document).ready(function()
   {
+    var currentPage = 1;
+    var pageSize = 12;
+    loadData();
+
+    $('#next-button').on('click', function() {
+        currentPage++;
+        loadData();
+    });
+
+    $('#prev-button').on('click', function() {
+        currentPage--;
+        loadData();
+    });
+
+    function loadData()
+    {
+        let log=$.ajax({
+            url: 'ajax/load_users.php',
+            type: 'POST',
+            data: {
+                Submit: 'submit',
+                page: currentPage,
+                pageSize: pageSize
+            },
+            cache: false,
+            success: function(data) 
+            {
+
+                $('#gridRow').html(data);
+                updatePagination();
+            }
+        });
+        console.log(log);
+    }
+
+    function updatePagination() 
+    {
+        if (currentPage <= 1) 
+        {
+            $('#prev-button').attr('disabled', 'disabled');
+        } else {
+            $('#prev-button').removeAttr('disabled');
+        }
+    }
+
 
     let log=$.ajax({
           url: 'ajax/load_events.php',
@@ -71,11 +118,11 @@ include('connect.php'); ?>
           }
       });
 
-
-      loade_user();
+    //   loade_user();
+      
       $('#alluser').click(function()
       { 
-        loade_user();
+        loadData();
       });
 
       $('#search').click(function()
@@ -131,20 +178,20 @@ include('connect.php'); ?>
     });
 
     
-    function loade_user()
-    {
-      let log=$.ajax({
-          url: 'ajax/load_users.php',
-          type: "POST",
-          data:{Submit:"submit"},
-          cache:false,
-          success:function(data)
-          {
-              $('#gridRow').html(data);
-              $('#seeall').hide();
-          }
-      });
-    }
+    // function loade_user()
+    // {
+    //   let log=$.ajax({
+    //       url: 'ajax/load_users.php',
+    //       type: "POST",
+    //       data:{Submit:"submit"},
+    //       cache:false,
+    //       success:function(data)
+    //       {
+    //           $('#gridRow').html(data);
+    //           $('#seeall').hide();
+    //       }
+    //   });
+    // }
     
 </script>
 

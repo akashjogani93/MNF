@@ -17,7 +17,7 @@ if(isset($_POST['Submit']))
                 <img src="<?php echo 'ajax/admin/'.$profile; ?>" alt="Image 1" class="card-img-top1">
                 <h4 class="text-left" style="color:black;"><?php echo $name; ?></h4>
                 <p><b>Phone: </b><?php echo $phone; ?></p>
-                <p><b>Designation: <?php echo $des; ?></p>
+                <p><b>Designation:</b><?php echo $des; ?></p>
             </div>
         <?php   
     } 
