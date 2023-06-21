@@ -1,0 +1,365 @@
+body
+    {
+        background-image: url("../admin/assets/image/log.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        line-height: 0.2;
+        font-weight: 500;
+    }
+
+.login-box-container 
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+        
+.login-box-form
+{
+    background-color: white;
+    width:30%;
+    padding:20px 20px;
+    border-radius: 5px;
+    align-items: center;
+}
+
+.register-box-form
+{
+    background-color: white;
+    width:50%;
+    padding:20px 20px;
+    border-radius: 5px;
+    align-items: center;
+}
+
+.forget-box-form
+{
+    background-color: white;
+    width:30%;
+    padding:20px 20px;
+    border-radius: 5px;
+    align-items: center;
+}
+
+.form-group label {
+    color: #000;
+    font-weight: 600;
+    margin-bottom: 0px;
+}
+.form-group input, .form-group select {
+    /* border: none; */
+    background-color: #f0f0f0;
+}
+
+.form-control {
+    margin-top: 10px;
+}
+
+.logo{
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.heading {
+    margin-bottom: 40px;
+    text-align:center;
+    color:rgb(113, 15, 66);
+}
+
+.btn-block{
+    background-color:rgb(113, 15, 66);
+    color:white;
+    margin-bottom: 15px;
+}
+
+.btn-block:hover{
+    color:white;
+    background-color:rgb(79, 20, 50);
+}
+
+.register-link>a,.login-link>a
+{
+    color: #007bff;
+    text-decoration: none;
+}
+
+.register-link,.login-link
+{
+    font-size: 14px;
+    line-height: 5px;
+}
+
+
+
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    .login-box-form,.register-box-form,.forget-box-form{ width:60%; }
+    .heading{margin-bottom: 40px;}
+}
+@media screen and (max-device-width: 640px) {
+    .login-box-form,.register-box-form,.forget-box-form{ width:90%; padding:20px 0;}
+    .logo{width: 80px; height: 80px;}
+    .heading{margin-bottom: 40px;}
+}
+
+       /*  .login-box 
+        {
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
+            
+            width:auto;
+            
+        }
+        @media only screen and (max-width: 550px) {
+            .login-box{
+                width:90%;
+            }
+            .login-box-container 
+            {
+                width:100%;
+                max-width: 400px;
+                padding:0;
+            }
+        }
+
+        .logo{
+            position:relative;
+            left:43%;
+            width: 40px;
+            height: 40px;
+            margin-bottom: 10px;
+        }
+        .logo1 {
+            position:relative;
+            left:47%;
+            width: 40px;
+            height: 40px;
+            margin-bottom: 10px;
+        }
+
+        .heading {
+            margin-bottom: 10px;
+            text-align:center;
+        }
+        .register-link,.login-link {
+            margin-top: 20px;
+        }
+
+        .register-link a, .login-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .btn-block{
+            background-color:rgb(113, 15, 66);
+            color:white;
+        }
+        .btn-block:hover{
+            color:white;
+        }
+      
+        .loader1 {
+            border: 10px solid #f3f3f3;
+            border-top: 10px solid #c934db;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            animation: spin 2s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        button#register {
+            width: 50%;
+        }
+        @media only screen and (max-width: 600px) {
+            button#register {
+                width: 100%;
+            }
+        }
+
+        .loader {
+            display: none;
+            margin-left: 5px;
+            width: 12px;
+            height: 12px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            }
+
+            @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+            }
+
+
+        .register-link,.login-link {
+            margin-top: 20px;
+        }
+
+        .register-link a, .login-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        #forget
+        {
+            padding:10 90px;
+        } */
+
+
+
+        /* body
+        {
+            background-image: url("admin/assets/image/log.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            line-height: 0.2;
+            font-weight: 500;
+        }
+
+        .login-box-container 
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding:0 80px;
+        }
+        
+        .login-box 
+        {
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
+            max-width: 700px;
+            width: 100%;
+            width:auto;
+            text-align: center;
+        }
+        @media only screen and (max-width: 550px) {
+            .login-box{
+                width:90%;
+            }
+            .login-box-container 
+            {
+                width:100%;
+                max-width: 400px;
+                padding:0;
+            }
+        }
+
+        .logo{
+            position:relative;
+            left:43%;
+            width: 40px;
+            height: 40px;
+            margin-bottom: 10px;
+        }
+        .logo1 {
+            position:relative;
+            left:47%;
+            width: 40px;
+            height: 40px;
+            margin-bottom: 10px;
+        }
+
+        .heading {
+            margin-bottom: 10px;
+            text-align:center;
+        }
+        .register-link,.login-link {
+            margin-top: 20px;
+        }
+
+        .register-link a, .login-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .btn-block{
+            background-color:rgb(113, 15, 66);
+            color:white;
+        }
+        .btn-block:hover{
+            color:white;
+        }
+      
+        .loader1 {
+            border: 10px solid #f3f3f3;
+            border-top: 10px solid #c934db;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            animation: spin 2s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        button#register {
+            width: 50%;
+        }
+        @media only screen and (max-width: 600px) {
+            button#register {
+                width: 100%;
+            }
+        }
+
+        .loader {
+            display: none;
+            margin-left: 5px;
+            width: 12px;
+            height: 12px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            }
+
+            @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+            }
+
+
+        .register-link,.login-link {
+            margin-top: 20px;
+        }
+
+        .register-link a, .login-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        #forget
+        {
+            padding:10 90px;
+        } */

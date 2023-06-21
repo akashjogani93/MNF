@@ -1,0 +1,362 @@
+
+body , html {
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+/* header */
+.navbar {
+    /* margin-bottom: 20px; */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 2px 40px;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    height: 70px;
+    width:70px;
+}
+
+.navbar-brand img {
+    max-height: 100%;
+    vertical-align: middle;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #000;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  color: #000;
+}
+
+.container-fluid
+{
+    margin:0;
+    padding:80px 0  0 0;
+
+}
+
+.custom-margin
+{
+    padding:0 40px;
+}
+.main
+{
+    padding-top:40px;
+}
+/* Home*/
+.btBack{
+    background-color: #710F42;
+    color:white;
+    border-radius: 0;
+    font-size: 14px;
+}
+
+.subs>p, .column>p, .center-box>p{
+    letter-spacing: 1px;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 14px;
+}
+.subs>h2{
+    color:rgb(113, 15, 66);
+}
+
+.column 
+{
+    margin: 10px;
+    padding: 20px;
+    border-radius: 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.column img 
+{
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    margin-bottom: 10px;
+}
+
+/* in touch */
+
+.center-box {
+    border: 1px solid black;
+    padding:50px 200px;
+    margin: auto;
+    width:70%;
+    background-color: rgb(223, 223, 223);
+    
+}
+
+.input-for{
+    border: 1px solid black;
+    border-radius: 0;
+}
+
+.intouch
+{
+    padding-bottom:40px;
+}
+/* footer */
+
+.footer{
+    background-color: #710F42;
+    padding:40px 40px;
+}
+
+.footer h4, .footer p, .footer h6{
+    letter-spacing: 0.8px;
+    color:white !important;
+
+  }
+  
+.svg-inline--fa {
+color:white !important;
+margin:10px !important;
+font-size: 22px;
+}
+.contactdetails{
+    font-weight: 300;
+    letter-spacing: 0.8px;
+}
+
+.quick-links .quick-link {
+    color: white;
+    text-decoration: none;
+    /* font-weight: bold; */
+}
+.quick-links{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+/* community */
+
+.fixed-width-image1
+{
+    width: 100%; height: 300px;
+    margin-left: auto; 
+    /* padding-top:30px; */
+}
+
+.fixed-width-image2
+{
+    justify-content: center;
+    width: 50%; height: 300px;
+    margin-left: auto; 
+    padding-top:30px;
+}
+
+
+.backbg
+{
+    /* margin-top:20px; */
+    background-color: #f0f0f0;
+}
+
+.gridRowall 
+{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    /* background-color: #f0f0f0; */
+}
+
+.user{
+    width: 23.5% !important;
+    margin: 5px 5px;
+}
+.card-img-top {
+    width: 100%; 
+    height: 250px; 
+    object-fit: cover; 
+}
+
+.card {
+    text-align: left;
+    
+  }
+.card-body
+{
+  padding: 10px 5px 10px 10px;
+}
+.card-title {
+  margin-bottom: 0.10rem;
+  margin-top: 0.10rem;
+}
+
+.card-body>.card-title ,.card-body>.card-title>.card-subtitle{
+  text-align:left;
+}
+
+.card-subtitle{
+    color:#756767;
+    font-size: 15px;
+    margin-top: 3px;
+}
+.fiels
+{
+    display: flex;
+    width: 45%;
+    align-items: space-between;
+}
+
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
+.page-link {
+padding: 8px 16px;
+background-color: rgb(113, 15, 66);
+color: white;
+border: none;
+cursor: pointer;
+margin: 0 5px;
+}
+
+.page-link:hover {
+background-color: rgb(113, 15, 66);
+color: white;
+}
+.page-link.active {
+background-color: rgb(89, 8, 50);
+font-weight: bold;
+}
+
+
+.eventsboxes {
+    width: 23% !important;
+    margin: 15px 5px;
+    box-shadow: rgba(255, 255, 255, 0.15) 0px 15px 25px;
+    box-shadow: rgb(11 11 11 / 15%) 2px -1px 12px;
+    padding: 20px;
+    border-radius: 0;
+    background-color: white;
+  }
+  .eventsboxes p {
+    font-size:16px;
+    font-weight: 400;
+    color: #756767;
+    margin-bottom: 0;
+  }
+  .card-img-top1{
+    width: 100%; 
+    height: 200px; 
+    object-fit: cover; 
+  }
+
+
+/* contact us */
+
+.contact-form {
+    display: grid;
+    grid-gap: 20px;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .contact-form button {
+    padding: 10px 20px;
+    background-color: rgb(113, 15, 66);
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+@media (max-width: 992px) {
+    .user { width: 18% !important;
+      margin: 3px 10px;
+    }
+    .eventsboxes {
+        width: 20% !important;
+        margin: 3px 10px;
+    }
+    .eventsboxes>.card-title {
+        font-size: 14px;
+      }
+}
+
+@media (max-width: 768px) {
+    .user {
+        width: 31% !important;
+        margin: 5px 10px;
+    }
+    .eventsboxes {
+        width: 31% !important;
+        margin: 5px 10px;
+        padding: 5px;
+      }
+    .eventsboxes>.card-title {
+        font-size: 24px;
+      }
+      .eventsboxes p {
+        font-size: 14px;
+        font-weight: 400;
+        color: #756767;
+        margin-bottom: 0;
+      }
+}
+
+@media (max-width: 576px) 
+{
+    .user {
+        width: 47% !important;
+        margin: 5px 2px;
+    }
+    .eventsboxes {
+        width: 47% !important;
+        margin: 5px 2px;
+        padding: 5px;
+
+      }
+      .eventsboxes>.card-title {
+        margin-top: 5px;
+        font-size: 18px;
+        font-weight: 600px;
+      }
+      .eventsboxes p {
+        font-size: 12px;
+        font-weight: 300;
+        color: #756767;
+        margin-bottom: 0;
+      }
+}
+
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    .container-fluid{padding:80px 0 0 0;}
+    .center-box {width:80%; padding:20px 40px;}
+    .main,.intouch{padding-top:40px;}
+    .intouch{padding-bottom:40px;}
+    .fiels{display: flex; width:50%}
+    .footer{padding:30px 40px;}
+}
+@media screen and (max-device-width: 640px) {
+    .navbar-brand { height: 60px; }
+    .navbar {padding: 2px 20px }
+    .custom-margin {padding: 0 20px }
+    .container-fluid{padding:80px 0 0 0;}
+    .center-box {width:90%; padding:20px 20px;}
+    .main,.intouch{padding-top:40px;}
+    .intouch{padding-bottom:40px;}
+    .fiels{display: block; width:100%;}
+    .footer{padding:30px 40px;}
+
+}

@@ -2,17 +2,19 @@
     include('connect.php');
 ?>
 <style>
-
     body
     {
         background-image: url("admin/assets/image/log.jpg");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
-        /* display: flex; */
         align-items: center;
         justify-content: center;
         height: 100vh;
+    }
+    #profi{
+      color:rgb(113, 15, 66);
+      font-weight: 800;
     }
     
     .profile-card {
@@ -151,8 +153,8 @@
         $jamaat=$row['community'];
     }
 ?>
-<div class="container-fluid main">
-  <div class="row custom-margin">
+<div class="container-fluid">
+  <div class="row custom-margin" style="margin:20px 0 20px 0;">
     <!-- Profile -->
     <div class="profile-card pb-3">
         <div class="profile-image" style="width:100%;">
@@ -182,7 +184,7 @@
             <p><span>Gender: </span><?php echo $gender; ?></p>
             <p><span>Address: </span><?php echo $adds; ?></p>
             <p><span>Occupation: </span><?php echo $occ; ?></p>
-            <p><span>Married Status: </span><?php echo $sta; ?></p>
+            <p><span>Marital Status: </span><?php echo $sta; ?></p>
               </div>
             </div>
           </div>
@@ -193,9 +195,9 @@
             <button id="editProfileBtn">Edit</button>
         </div>
     </div>
+    
     <!-- Profile Edit -->
     <div class="profile-edit-card py-3 pt-5">
-      <div class="container">
         <div class="row">
           <div class="col-md-6">
           <div class="form-group">
@@ -233,39 +235,53 @@
             <label class="d-block" for="gender">Gender:</label>
             <select name="gen" id="gen">
                 <?php
-                if($gender!='')
+                if($gender=='Male')
                 { ?>
-                    <option value="<?php echo $gender; ?>"><?php echo $gender; ?></option> <?php
+                    <option value="<?php echo $gender; ?>"><?php echo $gender; ?></option>
+                    <option value="Female">Female</option><?php
+                }else if($gender=='Female')
+                { ?>
+                    <option value="<?php echo $gender; ?>"><?php echo $gender; ?></option>
+                    <option value="Male">Male</option><?php
                 }else
-                { ?>
-                    <option value="">Select</option> <?php
+                {
+                  ?>
+                    <option value=""></option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option><?php
                 }
                 ?>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
             </select>
         </div>
         <div class="form-group">
-            <label class="d-block" for="married">Married Status:</label>
-            <select name="married" id="married">
+            <label class="d-block" for="married">Marital Status:</label>
+              <select name="married" id="married">
                 <?php
-                if($gender!='')
+                if($sta=='Single')
                 { ?>
-                    <option value="<?php echo $sta; ?>"><?php echo $sta; ?></option> <?php
-                }else
+                    <option value="<?php echo $sta; ?>"><?php echo $sta; ?></option>
+                    <option>Married</option> 
+                    <?php
+                }else if($sta=='Married')
+                {
+                  ?>
+                    <option value="<?php echo $sta; ?>"><?php echo $sta; ?></option>
+                    <option>Single</option>
+                    <?php
+                }
+                else
                 { ?>
-                    <option value="">Select</option><?php
+                    <option value="">Select</option>
+                    <option>Single</option>
+                    <option>Married</option><?php
                 }
                 ?>
-                <option>Un Married</option>
-                <option>Married</option>
-            </select>
+              </select>
         </div>
         <div class="form-group">
             <label for="adds">Address:</label>
             <input type="text" id="adds" class="form-control" value="<?php echo $adds; ?>">
         </div>
-            </div>
         </div>
       </div>
         

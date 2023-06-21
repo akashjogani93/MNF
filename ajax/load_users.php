@@ -3,7 +3,7 @@
 if(isset($_POST['Submit']))
 {
     $page = isset($_POST['page']) ? $_POST['page'] : 1;
-    $pageSize = isset($_POST['pageSize']) ? $_POST['pageSize'] : 12;
+    $pageSize = isset($_POST['pageSize']) ? $_POST['pageSize'] : 8;
 
     $offset = ($page - 1) * $pageSize;
 
@@ -22,17 +22,12 @@ if(isset($_POST['Submit']))
             $profile="../img/nouser.jpg";
         }
         ?>
-
-        <div class="" id="col">
-            <div class="card">
-                <img src="<?php echo 'ajax/'.$profile;?>" class="card-img-top" alt="Profile Image">
-                <div class="card-body">
-                    <h5 class="card-title"><?php echo $name; ?></h5>
-                    <p class="card-subtitle"><?php echo $email; ?></p>
-                    <p class="card-subtitle"><?php echo $phone; ?></p>
-                    <p class="card-subtitle"><?php echo $community; ?></p>
-                </div>
-            </div>
+        <div class="eventsboxes">
+            <img src="<?php echo 'ajax/'.$profile;?>" class="card-img-top" alt="Profile Image">
+            <h4 class="card-title text-left" style="color:black;"><?php echo $name; ?></h4>
+            <p><?php echo $email; ?></p>
+            <p><?php echo $phone; ?></p>
+            <p><?php echo $community; ?></p>
         </div>
         <?php   
     } 
@@ -67,7 +62,7 @@ if(isset($_POST['comname']))
             }
             ?>
 
-            <div class="" id="col">
+            <div class="user" id="col">
                 <div class="card">
                     <!-- <div class="imgcard"> -->
                         <img src="<?php echo 'ajax/'.$profile;?>" class="card-img-top" alt="Profile Image">

@@ -4,263 +4,155 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
-    <style>
-        body
-        {
-            background-image: url("admin/assets/image/log.jpg");
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-            line-height: 0.2;
-            font-weight: 500;
-        }
-
-        .login-box-container 
-        {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            padding:0 80px;
-        }
-        .login-box 
-        {
-            background-color: white;
-            padding: 10px;
-            border-radius: 5px;
-            /* max-width: 700px;
-            width: 100%; */
-            width:auto;
-            /* text-align: center; */
-        }
-        @media only screen and (max-width: 550px) {
-            .login-box{
-                width:90%;
-            }
-            .login-box-container 
-            {
-                width:100%;
-                max-width: 400px;
-                padding:0;
-            }
-        }
-
-        .logo{
-            position:relative;
-            left:43%;
-            width: 40px;
-            height: 40px;
-            margin-bottom: 10px;
-        }
-        .logo1 {
-            position:relative;
-            left:47%;
-            width: 40px;
-            height: 40px;
-            margin-bottom: 10px;
-        }
-
-        .heading {
-            margin-bottom: 10px;
-            text-align:center;
-        }
-        .register-link,.login-link {
-            margin-top: 20px;
-        }
-
-        .register-link a, .login-link a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        .btn-block{
-            background-color:rgb(113, 15, 66);
-            color:white;
-        }
-        .btn-block:hover{
-            color:white;
-        }
-      
-        .loader1 {
-            border: 10px solid #f3f3f3;
-            border-top: 10px solid #c934db;
-            border-radius: 50%;
-            width: 100px;
-            height: 100px;
-            animation: spin 2s linear infinite;
-            margin: 20px auto;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        button#register {
-            width: 50%;
-        }
-        @media only screen and (max-width: 600px) {
-            button#register {
-                width: 100%;
-            }
-        }
-
-        .loader {
-            display: none;
-            margin-left: 5px;
-            width: 12px;
-            height: 12px;
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #3498db;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            }
-
-            @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-            }
-
-
-        .register-link,.login-link {
-            margin-top: 20px;
-        }
-
-        .register-link a, .login-link a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        #forget
-        {
-            padding:10 90px;
-        }
-
-    </style>
+    <link rel="stylesheet" href="style/custom.css">
     <title>MNF</title>
 </head>
 <?php include('connect.php');?>
 <body>
     <div class="login-box-container">
-    <!-- <button id="myButton" onclick="handleClick()">Click Me</button> -->
-        <div class="login-box">
+        <div class="login-box-form" id="login-form">
             <!-- Login Box -->
-            <div id="login-form">
-                <img src="img/logo.png" alt="Logo" class="logo" >
-                <h4 class="heading">LOGIN</h4>
-                <div class="form-group">
-                    <label for="username">Email</label>
-                    <input type="email" id="username" class="form-control" required autocomplete="off">
-                    <div id="emailvalid" style="margin-top:7px; font-size:10px; letter-spacing:0.8px"></div>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password1" class="form-control" required  autocomplete="off">
-                    <div id="passvalid" style="margin-top:7px; font-size:10px; letter-spacing:0.8px"></div>
-                </div>
-                <button id="login" class="btn btn-block">Login</button>
-                <p class="register-link text-center">Don't have an account? <a href="#" id="register-link">Register here</a></p></br>
-                <p class="register-link text-center">Forget Password? <a href="#" id="forget-link">Reset here</a></p>
-            </div>
-            <!-- Login Box End -->
-
-            <!-- Registration Box -->
-            <div id="register-form" style="display: none;">
-                <img src="img/logo.png" alt="Logo" class="logo1" >
-                <h4 class="heading">REGISTER</h4>
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
+                            <center><img src="img/logo.png" alt="Logo" class="logo" >
+                            <h4 class="heading">LOGIN</h4></center>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
                             <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" id="name" class="form-control" required autocomplete="off">
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" class="form-control" required autocomplete="off">
-                                <div id="validemail" style="margin-top:7px; font-size:10px; letter-spacing:0.8px"></div>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Phone</label>
-                                <input type="text" id="phone" class="form-control" required autocomplete="off">
-                                <div id="validmobile" style="margin-top:7px; font-size:10px; letter-spacing:0.8px"></div>
-                            </div>
-                            <div class="form-group">
-                                <label for="com">Community</label>
-                                <select id="com" class="form-control" required>
-                                    <option value=""></option>
-                                    <?php 
-                                        $query="SELECT DISTINCT `comName` FROM `community`";
-                                        $co=mysqli_query($conn,$query);
-                                        while($row=mysqli_fetch_assoc($co))
-                                        {
-                                        $comm=$row['comName'];
-                                        ?>
-                                            <option value="<?php echo $comm; ?>"><?php echo $comm; ?></option>
-                                        <?php
-                                        }
-                                    ?>
-                                </select>
+                                <label for="username">Email</label>
+                                <input type="email" id="username" class="form-control" required autocomplete="off">
+                                <div id="emailvalid" style="margin-top:7px; font-size:10px; letter-spacing:0.8px"></div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="occ">Occupation</label>
-                                <input type="text" id="occ" class="form-control" required autocomplete="off">
-                                <div id="Occu" style="margin-top:7px; font-size:10px; letter-spacing:0.8px"></div>
-                            </div>
-                            <div class="form-group">
-                                <label for="sta">Marital Status</label>
-                                <select id="sta" class="form-control" required>
-                                    <option value=""></option>
-                                    <option>Single</option>
-                                    <option>Married</option>
-                                </select>
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="text" id="password" class="form-control" required autocomplete="off">
-                                <div style="margin-top:7px; font-size:10px; letter-spacing:0.8px">Password Must Be Alphanumeric Minumum length 6</div>
-                                <div id="passValid" style="margin-top:7px; font-size:10px; letter-spacing:0.8px"></div>
-                            </div>
-                            <div class="form-group">
-                                <label for="confirm-password">Confirm Password</label>
-                                <input type="password" id="confirm-password" class="form-control" required autocomplete="off">
-                                <div id="confirm" style="margin-top:7px; font-size:10px; letter-spacing:0.8px"></div>
+                                <input type="password" id="password1" class="form-control" required  autocomplete="off">
+                                <div id="passvalid" style="margin-top:7px; font-size:10px; letter-spacing:0.8px"></div>
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-12">
-                            <center><button type="submit" class="btn btn-block reg" id="register">Register</button><center>
-                            <p class="login-link text-center">Already have an account? <a href="#" id="login-link">Login here</a></p>
+                            <button id="login" class="btn btn-block">LOGIN</button>
+                            <p class="register-link text-center">Don't have an account? <a href="#" id="register-link">Register here</a></p></br>
+                            <p class="register-link text-center">Forgot Password? <a href="#" id="forget-link">Reset here</a></p>
                         </div>
+                    </div>
                 </div>
-                </div>
-            </div>
-            <!-- Registration Box End -->
-
-
-            <!-- Forget Password -->
-            <div id="forget-pass"  style="display: none;">
-                <img src="img/logo.png" alt="Logo" class="logo" >
-                <h4 class="heading">Forget Password</h4>
-                <div class="form-group">
-                    <label for="username">Email</label>
-                    <input type="email" id="forgetEmail" class="form-control" required autocomplete="off">
-                    <div id="forgetvalid" style="margin-top:7px; font-size:10px; letter-spacing:0.8px"></div>
-                </div>
-                <button id="forget" class="btn btn-block">Send Mail</button>
-                <p class="login-link text-center">Already Know Password Back To Login? <a href="#" id="login-link3">Login here</a></p>
-            </div>
-
-            
+            <!-- Login Box End -->
         </div>
+
+        <!-- Registration Box -->
+        <div id="register-form" style="display: none;" class="register-box-form">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <center><img src="img/logo.png" alt="Logo" class="logo" >
+                        <h4 class="heading">REGISTER</h4></center>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" class="form-control" required autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" required autocomplete="off">
+                            <div id="validemail" style="margin-top:7px; font-size:10px; letter-spacing:0.8px"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="text" id="phone" class="form-control" required autocomplete="off">
+                            <div id="validmobile" style="margin-top:7px; font-size:10px; letter-spacing:0.8px"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="com">Community</label>
+                            <select id="com" class="form-control" required>
+                                <option value=""></option>
+                                <?php 
+                                    $query="SELECT DISTINCT `comName` FROM `community`";
+                                    $co=mysqli_query($conn,$query);
+                                    while($row=mysqli_fetch_assoc($co))
+                                    {
+                                    $comm=$row['comName'];
+                                    ?>
+                                        <option value="<?php echo $comm; ?>"><?php echo $comm; ?></option>
+                                    <?php
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="occ">Occupation</label>
+                            <input type="text" id="occ" class="form-control" required autocomplete="off">
+                            <div id="Occu" style="margin-top:7px; font-size:10px; letter-spacing:0.8px"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="sta">Marital Status</label>
+                            <select id="sta" class="form-control" required>
+                                <option value=""></option>
+                                <option>Single</option>
+                                <option>Married</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="text" id="password" class="form-control" required autocomplete="off">
+                            <div style="margin-top:7px; font-size:10px; letter-spacing:0.8px">Password Must Be Alphanumeric Minumum length 6</div>
+                            <div id="passValid" style="margin-top:7px; font-size:10px; letter-spacing:0.8px"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm Password</label>
+                            <input type="password" id="confirm-password" class="form-control" required autocomplete="off">
+                            <div id="confirm" style="margin-top:7px; font-size:10px; letter-spacing:0.8px"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <center><button type="submit" class="btn btn-block reg" id="register">REGISTER</button><center>
+                        <p class="login-link text-center">Already have an account? <a href="#" id="login-link">Login here</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <!-- Registration Box End -->
+
+         <!-- Forget Password -->
+        <div id="forget-pass"  style="display: none;" class="forget-box-form">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <center><img src="img/logo.png" alt="Logo" class="logo" >
+                            <h4 class="heading">RESET PASSWORD</h4></center>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="username">Email</label>
+                            <input type="email" id="forgetEmail" class="form-control" required autocomplete="off">
+                            <div id="forgetvalid" style="margin-top:7px; font-size:10px; letter-spacing:0.8px"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button id="forget" class="btn btn-block">SEND</button>
+                        <p class="login-link text-center">Already Know Password Back To Login? <a href="#" id="login-link3">Login here</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Forget Box End -->
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
@@ -428,6 +320,16 @@
             $('#username').blur(function()
             {
                 var email = $('#username').val();
+                if(email=='')
+                {
+                    $('#emailvalid').html("<span style='color:red'>Fill Email</span>");
+                    $('#username').css('border-color', 'red');
+                    exit();
+                }else
+                {
+                    $('#emailvalid').html('');
+                    $('#username').css('border-color', '');
+                }
                 var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if(emailPattern.test(email))
                 {
@@ -441,12 +343,13 @@
                             {
                                 $('#username').css('border-color', 'green');
                                 $('#emailvalid').html('');
-                                $('#login').prop('disabled',false);
+                                // $('#login').prop('disabled',false);
                             }else
                             {
                                 $('#emailvalid').html("<span style='color:red'>Email Not Registered</span>");
                                 $('#username').css('border-color', 'red');
-                                $('#login').prop('disabled',true);
+                                // $('#login').prop('disabled',true);
+                                exit();
                             }
                         }
                      });
@@ -454,7 +357,7 @@
                 {
                     $('#emailvalid').html("<span style='color:red'>Email Is Not Valid</span>");
                     $('#username').css('border-color', 'red');
-                    $('#login').prop('disabled',true);
+                    // $('#login').prop('disabled',true);
                 }
             });
 

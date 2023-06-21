@@ -4,53 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
   <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
-
-  <link rel="stylesheet" href="style/style.css">
+  <link rel="stylesheet" href="style/style1.css">
   <title>MNF</title>
-  <style>
-    /* Custom styles */
-    .navbar {
-      margin-bottom: 20px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      /* height:20%; */
-      padding: 0 30px;
-    }
-
-    .navbar-brand {
-      font-weight: bold;
-      /* height:80%; */
-      height: 70px;
-      width:70px;
-    }
-
-    .navbar-brand img {
-      max-height: 100%;
-      vertical-align: middle;
-    }
-
-    .navbar-light .navbar-nav .nav-link {
-        color: #000;
-    }
-
-    .navbar-nav .nav-link:hover,
-    .navbar-nav .nav-link:focus {
-      color: #000;
-    }
-    .container-fluid{
-        width:100%;
-    }
-  </style>
 </head>
 <body>
-
   <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-    
       <a class="navbar-brand" href="home.php">
         <img src="img/logo.png" alt="Logo">
       </a>
@@ -60,29 +27,28 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="home.php">Home</a>
+            <a class="nav-link" href="home.php" id="home">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="community.php">Community</a>
+            <a class="nav-link" href="community.php" id="commu">Community</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="events.php">Events</a>
+            <a class="nav-link" href="events.php" id="eve">Events</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="aboutus.php">About Us</a>
+            <a class="nav-link" href="aboutus.php" id="abu">About Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contactus.php">Contact Us</a>
+            <a class="nav-link" href="contactus.php" id="conta">Contact Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="profile.php">Profile</a>
+            <a class="nav-link" href="profile.php" id="profi">Profile</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="logout.php">Logout</a>
           </li>
         </ul>
       </div>
-    
   </nav>
 
   <script>

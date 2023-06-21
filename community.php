@@ -1,6 +1,47 @@
 <?php include('header.php'); 
 include('connect.php'); ?>
-<div class="container-fluid main">
+<style>
+  #commu{
+    color:rgb(113, 15, 66);
+    font-weight: 800;
+  }
+
+  #loader {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+#loader:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+</style>
+<div class="container-fluid">
   <div class="row custom-margin">
     <div class="col-lg-6 d-flex flex-column justify-content-center align-items-left">
       <h4 style="color:black;">OUR COMMUNITY</h4>
@@ -8,14 +49,14 @@ include('connect.php'); ?>
       <p style="color:black;">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available n publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document</p>
     </div>
     <div class="col-lg-6">
-        <img src="img/community.png" alt="Banner Image" class="img-fluid fixed-width-image1"  style="">
+        <center><img src="img/community.png" alt="Banner Image" class="img-fluid fixed-width-image1"  style=""><center>
     </div>
   </div>
-  
-  <div class="box-di">
-    <div class="row custom-margin" id="selectrow">
-      <div class="col-md-3">
-        <select class="form-control" id="comname">
+
+  <div class="row custom-margin main backbg" style="margin-top:20px">
+    <div class="col-md-12">
+      <center><div class="fiels">
+        <select class="form-control" id="comname" style="margin:0 10px; border-radius: 0;">
           <option value="">Select Community</option>
           <?php 
             $query="SELECT DISTINCT `comName` FROM `community`";
@@ -29,43 +70,51 @@ include('connect.php'); ?>
             }
           ?>
         </select>
-      </div>
-      <div class="col-md-3">
-        <input type="text" id="nameInput" placeholder="Search for names" class="form-control">
-      </div>
-      <div class="col-md-1">
-        <button class="btn btn-info" id="search">Search</button>
-      </div>
-      <div class="col-md-3" id="seeall" style="display:none;">
-        <button class="btn btn-info" id="alluser">See All</button>
-      </div>
-    </div>
-    <div class="row" id="gridRow">
-          
-    </div>
-    <div class="pagination">
-        <button class="page-link" id="prev-button" disabled>Previous</button>
-        <button class="page-link" id="next-button">Next</button>
-    </div>
-          </br>
-  </div>
-    <div class="row custom-margin">
-      <div class="col-lg-12">
-          <center><h3 class="text-center" style="color:black;">OUR COMMUNITY</h3></center>
-      </div>
-    </div>
-    <div class="row" id="eventRow">
+          <input type="text" id="nameInput" placeholder="Search for names" class="form-control" style="margin:0 10px; border-radius: 0;">
       
+          <button class="btn btBack" id="search" style="margin:0 10px;">Search</button>
+      
+          <div  id="seeall" style="display:none;">
+            <button class="btn btBack" id="alluser" style="margin:0 10px;">See All</button>
+          </div>
+      </div></center>
     </div>
+  </div>
+  <div class="row custom-margin main backbg gridRowall" id="gridRow">
+    
+  </div>
+  <div class="row custom-margin main backbg gridRowall" id="gridRow1" style="display:none">
+        
+  </div>
+  <div class="row custom-margin main backbg">
+    <div class="col-md-12">
+      <div class="pagination" id="pagination">
+          <button class="page-link" id="prev-button" disabled>Previous</button>
+          <button class="page-link" id="next-button">Next</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row custom-margin main">
+    <div class="col-lg-12">
+        <center><h3 class="text-center" style="color:black;">OUR COMMUNITY</h3></center>
+    </div>
+  </div>
+  <div class="row custom-margin main gridRowall" id="community">
+    
+  </div>
 </div>
 <script>
   $(document).ready(function()
   {
+    showLoader();
     var currentPage = 1;
-    var pageSize = 12;
+    var pageSize = 8;
     loadData();
 
-    $('#next-button').on('click', function() {
+    $('#next-button').on('click', function() 
+    {
+
         currentPage++;
         loadData();
     });
@@ -114,14 +163,25 @@ include('connect.php'); ?>
           cache:false,
           success:function(data)
           {
-              $('#eventRow').html(data);
+              $('#community').html(data);
           }
       });
 
+      function showLoader() {
+        $('#loader').show();
+      }
+
+      // Hide the loader
+      function hideLoader() {
+        $('#loader').hide();
+      }
     //   loade_user();
       
       $('#alluser').click(function()
       { 
+        $('#gridRow').show();
+        $('#gridRow1').hide();
+        $('#pagination').show();
         loadData();
       });
 
@@ -149,7 +209,10 @@ include('connect.php'); ?>
             cache:false,
             success:function(data)
             {
-                $('#gridRow').html(data);
+                $('#pagination').hide();
+                $('#gridRow').hide();
+                $('#gridRow1').show();
+                $('#gridRow1').html(data);
                 $('#seeall').show();
             }
         });
