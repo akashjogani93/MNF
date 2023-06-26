@@ -25,27 +25,29 @@
     {
       $('#signupvalid').html("<span style='color:red'>Fill Email</span>");
       $('#signupEmail').css('border-color', 'red');
-    }
-    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if(emailPattern.test(signupEmail))
-    {
-       let log=$.ajax({
-          url:"ajax/intouch.php",
-          method:"POST",
-          data:{email:signupEmail},
-          success: function(response)
-          {
-            $('#signupvalid').html(response);
-            setTimeout(function() {
-            $('#signupvalid').html('');
-                }, 3000);
-            $('#signupEmail').val('');
-          }
-        });console.log(log)
     }else
     {
-      $('#signupvalid').html("<span style='color:red'>Email Is Not Valid</span>");
-      $('#signupEmail').css('border-color', 'red');
+      var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if(emailPattern.test(signupEmail))
+      {
+        let log=$.ajax({
+            url:"ajax/intouch.php",
+            method:"POST",
+            data:{email:signupEmail},
+            success: function(response)
+            {
+              $('#signupvalid').html(response);
+              setTimeout(function() {
+              $('#signupvalid').html('');
+                  }, 3000);
+              $('#signupEmail').val('');
+            }
+          });console.log(log)
+      }else
+      {
+        $('#signupvalid').html("<span style='color:red'>Email Is Not Valid</span>");
+        $('#signupEmail').css('border-color', 'red');
+      }
     }
   });
 </script>

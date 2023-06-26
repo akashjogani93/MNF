@@ -238,6 +238,16 @@ include('connect.php'); ?>
         },
         minLength: 1
       });
+
+      $('#nameInput').keypress(function(event)
+            {
+                var keycode = (event.keyCode ? event.keyCode : event.which);
+                    if ((keycode < 48 || keycode > 57))
+                    return true;
+
+                    return false;
+
+            });
     });
 
     

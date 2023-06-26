@@ -16,9 +16,9 @@
     <div class="col-md-6">
       <h5 style="text-align:left">Contact Us</h5>
       <div class="contact-form">
-        <input type="text" name="name" placeholder="Your Name" required id="name">
-        <input type="email" name="email" placeholder="Your Email" required id="email">
-        <div id="validemail"></div>
+        <input type="text" name="name" placeholder="Your Name" required id="name" autocomplate="off">
+        <input type="email" name="email" placeholder="Your Email" required id="email" autocomplate="off">
+        <div id="validemail" style="display:none; font-size:12px; margin:0; padding:0;"></div>
         <textarea name="message" placeholder="Your Message" required id="message"></textarea>
         <button type="submit" id="contactsubmit" class="btBack">Send Message</button>
         <div id="conform"></div>
@@ -94,6 +94,7 @@
            });
           }else
           {
+              $('#validemail').show();
               $('#validemail').html("<span style='color:red'>Email Is Not Valid</span>");
               $('#email').css('border-color', 'red');
           }

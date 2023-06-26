@@ -12,31 +12,64 @@ if(isset($_POST['Submit']))
         $image=$out['image'];
         ?>
         <tr>
+            <td><div style="display:flex; justify-content:space-between;"><button id="edit" class="btn btn-info edit"><i class="far fa-edit"></i></buttom><button id="del" class="btn btn-danger"><i class="fas fa-trash-alt"></i></buttom></div></td>
             <td><?php echo ++$sn; ?></td>
             <td><?php echo $out['comName']; ?></td>
             <td><?php echo $out['adds']; ?></td>
             <td><?php echo $out['phone']; ?></td>
-            <td><img src="<?php echo 'ajax/'.$image;?>" alt="" height="80" widht="80"></td>
+            <td><img src="<?php echo 'ajax/'.$image;?>" alt="" style="height:100px; width:150px;"></td>
+            <td style="display:none;"><?php echo $out['id']; ?></td>
         </tr>
         <?php   
     } 
+    ?>
+    <?php
 }
 if(isset($_POST['comName']))
 {
     $comName = $_POST['comName'];
     $adds = $_POST['adds'];
     $phone = $_POST['phone'];
-    $file = $_FILES['file'];
-    $bond1 = upload_Profile($file,"../../img/community/");
-    $query = "INSERT INTO community (`comName`,`adds`,`phone`,`image`) VALUES ('$comName','$adds','$phone','$bond1')";
-    if (mysqli_query($conn, $query))
+    
+    
+    $upvalue = $_POST['upvalue'];
+    if($upvalue==1)
     {
-        echo "<span style='color:green'>New 'COMMUNITY' Added successfully</span>";
+        $file = $_FILES['file'];
+        $bond1 = upload_Profile($file,"../../img/community/");
+        $query = "INSERT INTO community (`comName`,`adds`,`phone`,`image`) VALUES ('$comName','$adds','$phone','$bond1')";
+        if (mysqli_query($conn, $query))
+        {
+            echo "<span style='color:green'>New 'COMMUNITY' Added successfully</span>";
+        }
+        else {
+                echo "Error: " . $query . "<br>" . mysqli_error($con);
+        }
+        mysqli_close($conn);
+    }else
+    {
+        $idupdate = $_POST['idupdate'];
+        $path = $_POST['path'];
+        if($path==0)
+        {
+            $query="UPDATE `community` SET `comName`='$comName',`adds`='$adds',`phone`='$phone' WHERE `id`='$idupdate'";
+        }else
+        {
+            $file = $_FILES['file'];
+            $bond1 = upload_Profile($file,"../../img/community/");
+            $query="UPDATE `community` SET `comName`='$comName',`adds`='$adds',`phone`='$phone',`image`='$bond1' WHERE `id`='$idupdate'";
+        }
+        if (mysqli_query($conn, $query))
+        {
+            echo "<span style='color:green'>'COMMUNITY' Updated successfully</span>";
+        }
+        else {
+                echo "Error: " . $query . "<br>" . mysqli_error($con);
+        }
+        mysqli_close($conn);
     }
-    else {
-            echo "Error: " . $query . "<br>" . mysqli_error($con);
-    }
-    mysqli_close($conn);
+
+    
 }
 
 function upload_Profile($image, $target_dir)

@@ -8,7 +8,7 @@
 <div class="container-fluid">
     <div class="row custom-margin">
         <div class="col-lg-6 d-flex flex-column justify-content-center align-items-left subs">
-            <h4 style="color:black;">UPCOMING EVENT</h4>
+            <h4 style="color:black;">UPCOMING EVENT's</h4>
             <h2>MAF-BLR-2023 Meet</h2>
             <p style="color:black;">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available n publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document</p>
             <div>

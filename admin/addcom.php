@@ -11,15 +11,20 @@ include('../connect.php')
         background-color: rgb(113, 15, 66);
         color: white;
     }
-    .btn{
+    .combtn{
       background-color: rgb(113, 15, 66);
         color: white;
     }
+    .svg-inline--fa {
+      font-size: 12px;
+    }
 </style>
+<script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
 <div class="page-content container-fluid">
     <div class="footer">
         <div class="d-flex justify-content-between">
-            <h2 class="text-center" style="font-weight: 600">COMMUNITY ADD AND VIEW</h2>
+            <h2 class="text-center" style="font-weight: 600">COMMUNITY ADD AND VIEW</h2><div class="d-flex flex-direction-row social">
+      </div>
         </div>
     </div>
 </div>
@@ -50,7 +55,11 @@ include('../connect.php')
               <input type="file" class="form-control form-control-sm" name="path" id="path"  accept="image/jpeg, image/png" required>
             </div>
             <div class="form-group">
-              <input type="submit" value="Submit" class="btn" id="community">
+              <input type="submit" value="Submit" class="btn combtn" id="community">
+              <input type="submit" value="Update" class="btn combtn" id="update" style="display:none;">
+              <input type="submit" value="Back" class="btn btn-info" id="back">
+              <input type="hidden" id="upvalue" name="upvalue" class="form-control" autocomplete="off" style="display:none;">
+              <input type="hidden" id="idupdate" name="upvalue" class="form-control" autocomplete="off" style="display:none;">
               <center><div id="submited"></div></center>
             </div>
           <!-- </form> -->
@@ -61,11 +70,13 @@ include('../connect.php')
           <table class="table table-bordered table-striped bg-white" id="example">
             <thead>
               <tr>
+                <th>Action</th>
                 <th>Sl NO</th>
                 <th>Community Name</th>
-                <th>Phone</th>
                 <th>Address</th>
+                <th>Phone</th>
                 <th>File</th>
+                <th style="display:none;">Id</th>
               </tr>
             </thead>
             <tbody class="mytable">
@@ -80,7 +91,34 @@ include('../connect.php')
   <script>
     $(document).ready(function() 
     {
+      $('#back').click(function()
+      {   
+        $('#name').val('');
+        $('#upvalue').val(1);
+        $('#adds').val('');
+        $('#phone').val('');
+        $('#community').show();
+        $('#update').hide();
+        $('#back').hide();
+      });
+      $('#example').on('click', '.edit', function() {
+        var row = $(this).closest('tr');
+        var slno = row.find('td:eq(1)').text();
+        var name = row.find('td:eq(2)').text();
+        var adds = row.find('td:eq(3)').text();
+        var phone = row.find('td:eq(4)').text();
+        var file = row.find('td:eq(5)').text();
+        var idupdate = row.find('td:eq(7)').text();
 
+        $('#name').val(name);
+        $('#adds').val(adds);
+        $('#phone').val(phone);
+        $('#idupdate').val(idupdate);
+        $('#upvalue').val(0);
+        $('#community').hide();
+        $('#update').show();
+        $('#back').show();
+      });
       loade();
       function loade()
       {
@@ -115,14 +153,31 @@ include('../connect.php')
 
         });
       
-      $('#community').click(function()
+      $('#community , #update').click(function()
       {
         var comName = $('#name').val();
         var adds = $('#adds').val();
         var phone = $('#phone').val();
+        var upvalue = $('#upvalue').val();
         var file=$('#path')[0].files[0];
-        var inputIds = ['#name','#phone', '#adds','#path'];
+        var fileName = $('#path').val();
+        var idupdate = $('#idupdate').val();
 
+        if(fileName=='')
+        {
+          path=0;
+        }else
+        {
+          path=1;
+        }
+
+        if(upvalue==1)
+        {
+          var inputIds = ['#name','#phone', '#adds','#path'];
+        }else
+        {
+          var inputIds = ['#name','#phone', '#adds'];
+        }
         for (var i = 0; i < inputIds.length; i++) 
         {
             var inputValue = $(inputIds[i]).val();
@@ -134,13 +189,15 @@ include('../connect.php')
                 $(inputIds[i]).css('border-color', '');
             }
         }
-
         
         var form_data = new FormData();
         form_data.append('comName', comName);
         form_data.append('adds', adds);
         form_data.append('phone', phone);
         form_data.append('file', file);
+        form_data.append('path', path);
+        form_data.append('upvalue', upvalue);
+        form_data.append('idupdate', idupdate);
         let log=$.ajax({
             url:"ajax/upload_community.php",
             method:"POST",
@@ -161,7 +218,7 @@ include('../connect.php')
         });
       });
 
+      
     });
-
   </script>
 </main>

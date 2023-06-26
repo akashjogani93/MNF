@@ -346,9 +346,9 @@ font-weight: bold;
     .main,.intouch{padding-top:40px;}
     .intouch{padding-bottom:40px;}
     .fiels{display: flex; width:50%}
-    .footer{padding:30px 40px;}
+    .footer{padding:20px 40px;}
 }
-@media screen and (max-device-width: 640px) {
+@media screen and (max-device-width: 576px) {
     .navbar-brand { height: 60px; }
     .navbar {padding: 2px 20px }
     .custom-margin {padding: 0 20px }
@@ -357,6 +357,6 @@ font-weight: bold;
     .main,.intouch{padding-top:40px;}
     .intouch{padding-bottom:40px;}
     .fiels{display: block; width:100%;}
-    .footer{padding:30px 40px;}
+    .footer{padding:20px 20px;}
 
 }

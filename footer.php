@@ -14,7 +14,7 @@
     <div class="col-md-5">
       <img src="img/logo.png" alt="Image">
       <p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a</p>
-      <h4 class="">FALLOW US ON</h4>
+      <h4 class="">FOLLOW US ON</h4>
       <div class="d-flex flex-direction-row social">
         <i class="fab fa-instagram"></i>
         <i class="fab fa-facebook-square"></i>
@@ -32,7 +32,7 @@
       </ul>
     </div>
     <div class="col-md-4">
-      <h4>RICH US AT</h4>
+      <h4>REACH US AT</h4>
       <h6>Registered Office :</h6>
       <p><b>Email: </b><span class="contactdetails"><?php echo $email; ?></span></br>
       <b>Phone: </b><span class="contactdetails"><?php echo $phone; ?></span></br>
