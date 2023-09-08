@@ -158,7 +158,6 @@
     <script>
         $(document).ready(function () 
         {
-            
             $("#register-link").click(function (e) {
                 e.preventDefault();
                 $("#login-form").hide();
@@ -226,8 +225,6 @@
                 var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if(emailPattern.test(email))
                 {
-
-                    
                     let log=$.ajax({
                         url:"ajax/register.php",
                         method:"POST",
